@@ -1,7 +1,7 @@
 <template>
   <div class="page-beer__btns">
-    <button class="btn" id="spin"><span>spin</span></button>
-    <button class="btn" id="accept"><span>accept</span></button>
+    <button class="btn"><span>spin</span></button>
+    <button class="btn"><span>accept</span></button>
   </div>
 </template>
 
@@ -11,6 +11,9 @@ export default {};
 
 <style lang="scss" scoped>
 @import "../../assets/variables.scss";
+button:not(:last-child) {
+  margin-right: 5px;
+}
 .btn {
   color: #292828;
   padding: 0px 30px;

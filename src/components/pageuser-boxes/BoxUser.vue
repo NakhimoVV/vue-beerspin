@@ -4,17 +4,19 @@
       <span class="icon-history"></span>
     </div>
     <div class="box-user__userchange">
-      <a href="#" id="userChange">Change User</a>
+      <a href="#" @click="$emit('changeUser')">Change User</a>
     </div>
     <div class="box-user__useravatar">
       <span class="icon-user-circle"></span>
     </div>
-    <div class="box-user__username">maria.cormier</div>
+    <div class="box-user__username">{{ userData.username }}</div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["userData"],
+};
 </script>
 
 <style lang="scss" scoped>

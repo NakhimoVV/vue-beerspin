@@ -1,6 +1,6 @@
 <template>
   <section class="page-user">
-    <BoxUser />
+    <BoxUser v-bind:userData="userData" @change-user="changeUser" />
     <BoxHistory />
   </section>
 </template>
@@ -9,7 +9,13 @@
 import BoxUser from "@/components/pageuser-boxes/BoxUser";
 import BoxHistory from "@/components/pageuser-boxes/BoxHistory";
 export default {
+  props: ["userData"],
   components: { BoxUser, BoxHistory },
+  methods: {
+    changeUser() {
+      this.$emit("changeUser");
+    },
+  },
 };
 </script>
 

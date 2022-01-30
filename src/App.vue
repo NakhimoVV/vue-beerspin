@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <main class="page">
-      <PageUser />
+      <PageUser v-bind:userData="userData" @change-user="changeUser" />
       <PageBeer />
     </main>
   </div>
@@ -14,18 +14,21 @@ export default {
   components: { PageUser, PageBeer },
   data() {
     return {
-      // user: {
-      //   username: "melissa.heaney",
-      // },
+      userData: {},
     };
   },
-  // mounted() {
-  //   fetch("https://random-data-api.com/api/users/random_user")
-  //     .then((response) => response.json())
-  //     .then((json) => {
-  //       this.user = json;
-  //     });
-  // },
+  mounted() {
+    this.changeUser();
+  },
+  methods: {
+    changeUser() {
+      fetch("https://random-data-api.com/api/users/random_user")
+        .then((response) => response.json())
+        .then((json) => {
+          this.userData = json;
+        });
+    },
+  },
 };
 </script>
 
