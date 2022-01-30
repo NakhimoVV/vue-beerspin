@@ -1,30 +1,46 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="wrapper">
+    <main class="page">
+      <PageUser />
+      <PageBeer />
+    </main>
   </div>
-  <router-view/>
 </template>
 
+<script>
+import PageUser from "@/components/PageUser";
+import PageBeer from "@/components/PageBeer";
+export default {
+  components: { PageUser, PageBeer },
+  data() {
+    return {
+      // user: {
+      //   username: "melissa.heaney",
+      // },
+    };
+  },
+  // mounted() {
+  //   fetch("https://random-data-api.com/api/users/random_user")
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       this.user = json;
+  //     });
+  // },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "assets/variables.scss";
+.wrapper {
+  height: 100vh;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+.page {
+  height: inherit;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  @media (max-width: $bp2+px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
   }
 }
 </style>
