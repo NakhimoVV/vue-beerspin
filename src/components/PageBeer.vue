@@ -1,7 +1,7 @@
 <template>
   <section class="page-beer">
     <div class="page-beer__img">
-      <img src="@/assets/barrel.png" alt="изображение пива" />
+      <img src="@/assets/img/barrel.png" alt="изображение пива" />
     </div>
     <CardBeer />
     <Buttons />
@@ -17,7 +17,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/variables.scss";
 .page-beer {
   height: inherit;
   display: grid;

@@ -1,21 +1,34 @@
 <template>
   <div class="page-beer__card card-beer">
-    <p class="card-beer__name">Hercules Double IPA</p>
-    <p class="card-beer__brand">Coors lite</p>
-    <p class="card-beer__style">Porter</p>
-    <p class="card-beer__hop">Horizon</p>
-    <p class="card-beer__malts">Chocolate</p>
-    <p class="card-beer__alcohol">3.5%</p>
-    <p class="card-beer__ibu">18 IBU</p>
+    <p class="card-beer__name">{{ BEERDATA.name }}</p>
+    <p class="card-beer__brand">{{ BEERDATA.brand }}</p>
+    <p class="card-beer__style">{{ BEERDATA.style }}</p>
+    <p class="card-beer__hop">{{ BEERDATA.hop }}</p>
+    <p class="card-beer__malts">{{ BEERDATA.malts }}</p>
+    <p class="card-beer__alcohol">{{ BEERDATA.alcohol }}</p>
+    <p class="card-beer__ibu">{{ BEERDATA.ibu }}</p>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapActions, mapGetters } from "vuex";
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapGetters(["BEERDATA"]),
+  },
+  methods: {
+    ...mapActions(["GET_BEERDATA_FROM_API"]),
+  },
+  mounted() {
+    this.GET_BEERDATA_FROM_API();
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/variables.scss";
 .card-beer {
   text-align: center;
   &__name {

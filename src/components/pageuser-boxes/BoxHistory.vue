@@ -25,7 +25,6 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/variables.scss";
 .user-history {
   @media (max-width: $bp2+px) {
     display: none;

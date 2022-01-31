@@ -1,16 +1,34 @@
 <template>
   <div class="page-beer__btns">
-    <button class="btn"><span>spin</span></button>
+    <button class="btn" @click="spin"><span>spin</span></button>
     <button class="btn"><span>accept</span></button>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapActions, mapGetters } from "vuex";
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapGetters(["BEERDATA"]),
+  },
+  methods: {
+    ...mapActions(["GET_BEERDATA_FROM_API"]),
+    spin() {
+      setTimeout(() => {
+        this.GET_BEERDATA_FROM_API();
+      }, 2500);
+    },
+  },
+  mounted() {
+    this.GET_BEERDATA_FROM_API();
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/variables.scss";
 button:not(:last-child) {
   margin-right: 5px;
 }

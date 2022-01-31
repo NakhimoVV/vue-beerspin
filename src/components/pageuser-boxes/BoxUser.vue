@@ -4,23 +4,34 @@
       <span class="icon-history"></span>
     </div>
     <div class="box-user__userchange">
-      <a href="#" @click="$emit('changeUser')">Change User</a>
+      <a href="#" @click="GET_USERDATA_FROM_API">Change User</a>
     </div>
     <div class="box-user__useravatar">
       <span class="icon-user-circle"></span>
     </div>
-    <div class="box-user__username">{{ userData.username }}</div>
+    <div class="box-user__username">{{ USERDATA.username }}</div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
-  props: ["userData"],
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapGetters(["USERDATA"]),
+  },
+  methods: {
+    ...mapActions(["GET_USERDATA_FROM_API"]),
+  },
+  mounted() {
+    this.GET_USERDATA_FROM_API();
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/variables.scss";
 .box-user {
   width: 100%;
   height: 100%;
