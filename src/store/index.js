@@ -5,7 +5,7 @@ export default createStore({
     state: {
         userData: {},
         beerData: {},
-        cloneBeerData: {}
+        history: []
     },
     mutations: {
         SET_USERDATA_TO_STATE: (state, userData) => {
@@ -14,6 +14,17 @@ export default createStore({
         SET_BEERDATA_TO_STATE: (state, beerData) => {
             state.beerData = beerData;
         },
+        SET_HISTORY_TO_STATE: (state) => {
+            if (state.beerData === state.history[state.history.length - 1]) {
+                alert('Уже выпито!');
+            }
+            else {
+                state.history.push(state.beerData);
+            }
+        },
+        REMOVE_HISTORY_TO_STATE: (state) => {
+            state.history.splice(0, state.history.length);
+        }
     },
     actions: {
         GET_USERDATA_FROM_API({ commit }) {
@@ -42,6 +53,12 @@ export default createStore({
                     return error;
                 })
         },
+        ADD_TO_HISTORY({ commit }) {
+            commit('SET_HISTORY_TO_STATE');
+        },
+        DELETE_HISTORY({ commit }) {
+            commit('REMOVE_HISTORY_TO_STATE');
+        }
     },
     getters: {
         USERDATA(state) {
@@ -50,8 +67,8 @@ export default createStore({
         BEERDATA(state) {
             return state.beerData;
         },
-        CLONE_BEERDATA() {
-            return Object.assign({}, 'BEERDATA');
+        HISTORY(state) {
+            return state.history;
         }
     }
 })

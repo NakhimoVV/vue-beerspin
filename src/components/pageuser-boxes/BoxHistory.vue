@@ -1,27 +1,50 @@
 <template>
-  <div>
-    <div class="page-user__history user-history">
-      <div class="user-history__title">
-        Сhoice history
-        <div class="cleanhistory">
-          <span class="icon-clean"></span>
-        </div>
+  <div
+    class="page-user__history user-history"
+    :class="{ showinghistory: HISTORY.length }"
+  >
+    <div class="user-history__title">
+      Сhoice history
+      <div
+        :class="{ cleanhistory: true, showclean: HISTORY.length }"
+        @click="delAllHistory"
+      >
+        <span class="icon-clean"></span>
       </div>
-      <div class="user-history__border"></div>
+    </div>
+    <div class="user-history__border">
+      <ListHistory v-for="row in HISTORY" :key="row.name" :beer="row" />
     </div>
     <div class="page-user__showmobile">
       <div class="page-user__showmobile-wrap">
         <div class="cleanhistory">
           <span class="icon-clean"></span>
         </div>
-        <div class="user-history__border"></div>
+        <div class="user-history__border">
+          <ListHistory />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import ListHistory from "@/components/pageuser-boxes/ListHistory";
+import { mapGetters, mapActions } from "vuex";
+export default {
+  components: { ListHistory },
+  computed: {
+    ...mapGetters(["HISTORY"]),
+  },
+  methods: {
+    ...mapActions(["DELETE_HISTORY"]),
+
+    delAllHistory() {
+      this.DELETE_HISTORY();
+    },
+  },
+  mounted() {},
+};
 </script>
 
 <style lang="scss" scoped>
@@ -69,7 +92,6 @@ export default {};
       height: inherit;
     }
   }
-
   &__row {
     border-bottom: 1px solid #fffc11;
     display: grid;

@@ -13,7 +13,7 @@ body {
 }
 //=================================================================
 .showinghistory{
-    align-self: stretch;
+    align-self: stretch !important;
     width: 100%;
 }
 .shaking {animation: shake 2.5s ease-in forwards;}

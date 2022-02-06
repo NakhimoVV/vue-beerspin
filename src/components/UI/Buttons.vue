@@ -1,29 +1,28 @@
 <template>
   <div class="page-beer__btns">
     <button class="btn" @click="spin"><span>spin</span></button>
-    <button class="btn"><span>accept</span></button>
+    <button class="btn" @click="addToHistory"><span>accept</span></button>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 export default {
   data() {
     return {};
   },
-  computed: {
-    ...mapGetters(["BEERDATA"]),
-  },
+  computed: {},
   methods: {
-    ...mapActions(["GET_BEERDATA_FROM_API"]),
+    ...mapActions(["GET_BEERDATA_FROM_API", "ADD_TO_HISTORY"]),
+
     spin() {
       setTimeout(() => {
         this.GET_BEERDATA_FROM_API();
       }, 2500);
     },
-  },
-  mounted() {
-    this.GET_BEERDATA_FROM_API();
+    addToHistory() {
+      this.ADD_TO_HISTORY();
+    },
   },
 };
 </script>
