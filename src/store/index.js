@@ -5,7 +5,9 @@ export default createStore({
     state: {
         userData: {},
         beerData: {},
-        history: []
+        history: [],
+        isSpinShake: false,
+        isSpinGlassBeer: true,
     },
     mutations: {
         SET_USERDATA_TO_STATE: (state, userData) => {
@@ -24,7 +26,13 @@ export default createStore({
         },
         REMOVE_HISTORY_TO_STATE: (state) => {
             state.history.splice(0, state.history.length);
-        }
+        },
+        CHANGE_SPIN_1: (state) => {
+            state.isSpinShake = !state.isSpinShake;
+        },
+        CHANGE_SPIN_2: (state) => {
+            state.isSpinGlassBeer = !state.isSpinGlassBeer;
+        },
     },
     actions: {
         GET_USERDATA_FROM_API({ commit }) {
@@ -58,7 +66,13 @@ export default createStore({
         },
         DELETE_HISTORY({ commit }) {
             commit('REMOVE_HISTORY_TO_STATE');
-        }
+        },
+        TOGGLE_SPIN_1({ commit }) {
+            commit('CHANGE_SPIN_1')
+        },
+        TOGGLE_SPIN_2({ commit }) {
+            commit('CHANGE_SPIN_2')
+        },
     },
     getters: {
         USERDATA(state) {
@@ -69,6 +83,12 @@ export default createStore({
         },
         HISTORY(state) {
             return state.history;
-        }
+        },
+        SPIN_STATE_1(state) {
+            return state.isSpinShake;
+        },
+        SPIN_STATE_2(state) {
+            return state.isSpinGlassBeer;
+        },
     }
 })

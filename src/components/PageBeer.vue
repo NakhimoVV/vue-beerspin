@@ -1,7 +1,18 @@
 <template>
   <section class="page-beer">
     <div class="page-beer__img">
-      <img src="@/assets/img/barrel.png" alt="изображение пива" />
+      <img
+        :src="
+          SPIN_STATE_2 === true
+            ? require('../assets/img/beerspin-c.png')
+            : require('../assets/img/barrel.png')
+        "
+        alt="изображение пива"
+        :class="{
+          shaking: SPIN_STATE_1 === true,
+          showingbeer: SPIN_STATE_2 === true,
+        }"
+      />
     </div>
     <CardBeer />
     <Buttons />
@@ -11,8 +22,13 @@
 <script>
 import CardBeer from "@/components/pagebeer-boxes/CardBeer";
 import Buttons from "@/components/UI/Buttons";
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   components: { CardBeer, Buttons },
+  computed: {
+    ...mapGetters(["SPIN_STATE_1", "SPIN_STATE_2"]),
+  },
 };
 </script>
 

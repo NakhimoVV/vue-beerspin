@@ -21,7 +21,7 @@
           <span class="icon-clean"></span>
         </div>
         <div class="user-history__border">
-          <ListHistory />
+          <ListHistory v-for="row in HISTORY" :key="row.name" :beer="row" />
         </div>
       </div>
     </div>

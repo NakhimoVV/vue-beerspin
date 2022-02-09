@@ -11,19 +11,28 @@ export default {
   data() {
     return {};
   },
-  computed: {},
   methods: {
-    ...mapActions(["GET_BEERDATA_FROM_API", "ADD_TO_HISTORY"]),
+    ...mapActions([
+      "GET_BEERDATA_FROM_API",
+      "ADD_TO_HISTORY",
+      "TOGGLE_SPIN_1",
+      "TOGGLE_SPIN_2",
+    ]),
 
     spin() {
+      this.TOGGLE_SPIN_2();
+      this.TOGGLE_SPIN_1();
       setTimeout(() => {
         this.GET_BEERDATA_FROM_API();
+        this.TOGGLE_SPIN_1();
+        this.TOGGLE_SPIN_2();
       }, 2500);
     },
     addToHistory() {
       this.ADD_TO_HISTORY();
     },
   },
+  mounted() {},
 };
 </script>
 
