@@ -1,6 +1,6 @@
 <template>
   <div class="page-user__box box-user">
-    <div class="box-user__showhistory">
+    <div class="box-user__showhistory" @click="TOGGLE_MOB_HISTORY">
       <span class="icon-history"></span>
     </div>
     <div class="box-user__userchange">
@@ -23,10 +23,11 @@ export default {
     ...mapGetters(["USERDATA"]),
   },
   methods: {
-    ...mapActions(["GET_USERDATA_FROM_API"]),
+    ...mapActions(["GET_USERDATA_FROM_API", "TOGGLE_MOB_HISTORY"]),
   },
   mounted() {
     this.GET_USERDATA_FROM_API();
+    this.TOGGLE_MOB_HISTORY();
   },
 };
 </script>

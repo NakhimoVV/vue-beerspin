@@ -2,15 +2,38 @@
   <section class="page-user">
     <BoxUser />
     <BoxHistory />
+    <div
+      class="page-user__showmobile"
+      :class="{ active: MOB_HISTORY === false }"
+    >
+      <div class="page-user__showmobile-wrap">
+        <div class="cleanhistory" @click="delAllHistory">
+          <span class="icon-clean"></span>
+        </div>
+        <div class="user-history__border">
+          <ListHistory v-for="row in HISTORY" :key="row.name" :beer="row" />
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
 import BoxUser from "@/components/pageuser-boxes/BoxUser";
 import BoxHistory from "@/components/pageuser-boxes/BoxHistory";
+import ListHistory from "@/components/pageuser-boxes/ListHistory";
+import { mapGetters, mapActions } from "vuex";
 export default {
-  components: { BoxUser, BoxHistory },
-  methods: {},
+  components: { BoxUser, BoxHistory, ListHistory },
+  computed: {
+    ...mapGetters(["HISTORY", "MOB_HISTORY"]),
+  },
+  methods: {
+    ...mapActions(["DELETE_HISTORY"]),
+    delAllHistory() {
+      this.DELETE_HISTORY();
+    },
+  },
 };
 </script>
 
@@ -50,5 +73,33 @@ export default {
   &__showmobile.active {
     left: 0;
   }
+}
+//=================================================================
+.icon-clean {
+  color: #fcdb0f;
+  font-size: calc(35px + (100 - 35) * ((100vw - 320px) / (1600 - 320)));
+  @media (min-width: $bp2+px) {
+    font-size: 30px;
+  }
+}
+.cleanhistory {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-50%, -10%);
+  z-index: 2;
+  cursor: pointer;
+  @media (max-width: $bp2+px) {
+    display: block;
+    right: 50%;
+    transform: translate(50%, -120%);
+  }
+}
+.page-user__showmobile-wrap {
+  position: relative;
+}
+.showclean {
+  display: block;
 }
 </style>

@@ -8,6 +8,7 @@ export default createStore({
         history: [],
         isSpinShake: false,
         isSpinGlassBeer: true,
+        isMobViewHis: false,
     },
     mutations: {
         SET_USERDATA_TO_STATE: (state, userData) => {
@@ -32,6 +33,9 @@ export default createStore({
         },
         CHANGE_SPIN_2: (state) => {
             state.isSpinGlassBeer = !state.isSpinGlassBeer;
+        },
+        CHANGE_MOB_HISTORY: (state) => {
+            state.isMobViewHis = !state.isMobViewHis;
         },
     },
     actions: {
@@ -73,6 +77,9 @@ export default createStore({
         TOGGLE_SPIN_2({ commit }) {
             commit('CHANGE_SPIN_2')
         },
+        TOGGLE_MOB_HISTORY({ commit }) {
+            commit('CHANGE_MOB_HISTORY')
+        },
     },
     getters: {
         USERDATA(state) {
@@ -89,6 +96,9 @@ export default createStore({
         },
         SPIN_STATE_2(state) {
             return state.isSpinGlassBeer;
+        },
+        MOB_HISTORY(state) {
+            return state.isMobViewHis;
         },
     }
 })

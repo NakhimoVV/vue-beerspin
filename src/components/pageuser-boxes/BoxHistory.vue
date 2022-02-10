@@ -15,16 +15,6 @@
     <div class="user-history__border">
       <ListHistory v-for="row in HISTORY" :key="row.name" :beer="row" />
     </div>
-    <div class="page-user__showmobile">
-      <div class="page-user__showmobile-wrap">
-        <div class="cleanhistory">
-          <span class="icon-clean"></span>
-        </div>
-        <div class="user-history__border">
-          <ListHistory v-for="row in HISTORY" :key="row.name" :beer="row" />
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -47,7 +37,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .user-history {
   @media (max-width: $bp2+px) {
     display: none;
@@ -98,33 +88,5 @@ export default {
     grid-template-columns: 1fr 2fr 0.5fr 0.5fr;
     justify-items: center;
   }
-}
-//=================================================================
-.icon-clean {
-  color: #fcdb0f;
-  font-size: calc(35px + (100 - 35) * ((100vw - 320px) / (1600 - 320)));
-  @media (min-width: $bp2+px) {
-    font-size: 30px;
-  }
-}
-.cleanhistory {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(-50%, -10%);
-  z-index: 2;
-  cursor: pointer;
-  @media (max-width: $bp2+px) {
-    display: block;
-    right: 50%;
-    transform: translate(50%, -120%);
-  }
-}
-.page-user__showmobile-wrap {
-  position: relative;
-}
-.showclean {
-  display: block;
 }
 </style>
