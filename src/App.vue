@@ -12,11 +12,6 @@ import PageUser from "@/components/PageUser";
 import PageBeer from "@/components/PageBeer";
 export default {
   components: { PageUser, PageBeer },
-  data() {
-    return {};
-  },
-  mounted() {},
-  methods: {},
 };
 </script>
 

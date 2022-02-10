@@ -8,9 +8,6 @@
 <script>
 import { mapActions } from "vuex";
 export default {
-  data() {
-    return {};
-  },
   methods: {
     ...mapActions([
       "GET_BEERDATA_FROM_API",
@@ -32,7 +29,6 @@ export default {
       this.ADD_TO_HISTORY();
     },
   },
-  mounted() {},
 };
 </script>
 

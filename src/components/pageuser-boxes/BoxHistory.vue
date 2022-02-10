@@ -33,7 +33,6 @@ export default {
       this.DELETE_HISTORY();
     },
   },
-  mounted() {},
 };
 </script>
 

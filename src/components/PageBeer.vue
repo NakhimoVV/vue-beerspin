@@ -22,7 +22,7 @@
 <script>
 import CardBeer from "@/components/pagebeer-boxes/CardBeer";
 import Buttons from "@/components/UI/Buttons";
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   components: { CardBeer, Buttons },
@@ -66,7 +66,6 @@ export default {
       object-fit: contain;
     }
   }
-
   &__card {
     grid-column: span 2;
     align-self: start;
@@ -78,7 +77,6 @@ export default {
       grid-column: span 2;
     }
   }
-
   &__btns {
     grid-column: span 2;
     justify-self: center;

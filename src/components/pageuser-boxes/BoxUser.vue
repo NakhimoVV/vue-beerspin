@@ -16,9 +16,6 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 export default {
-  data() {
-    return {};
-  },
   computed: {
     ...mapGetters(["USERDATA"]),
   },
@@ -44,7 +41,6 @@ export default {
     flex-direction: row;
     justify-content: flex-start;
   }
-
   &__showhistory {
     display: none;
     @media (max-width: $bp2+px) {
